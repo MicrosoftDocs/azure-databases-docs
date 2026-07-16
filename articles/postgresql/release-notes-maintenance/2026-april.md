@@ -4,7 +4,7 @@ description: Learn about the maintenance release notes for Azure Database for Po
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 04/21/2026
+ms.date: 07/16/2026
 ms.service: azure-database-postgresql
 ms.topic: release-notes
 ---
@@ -35,7 +35,6 @@ This new version introduces a range of new features and enhancements, resolves k
 
 - Improved long-term retention (LTR) backup reliability by enhancing backend backup workflows
 - Improved visibility into long-term retention (LTR) backup failures by surfacing backup issues to Azure Backup
-- Updated pg_duckdb extension to version 1.1.1, adding write support for Azure Blob Storage along with improvements.
 - Updated pgvector extension to version 0.8.0.2.
 - Improved error handling when the Private DNS Zone subscription isn’t registered for Microsoft.DBforPostgreSQL, preventing prolonged retries and surfacing a clearer customer facing error.
 - Subnets with both IPv4 & IPv6 now supported for Flexible Server integration. PostgreSQL connections are still limited to IPv4 only.

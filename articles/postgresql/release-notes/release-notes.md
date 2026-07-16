@@ -257,7 +257,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [private endpoints](../network/concepts-networking-private-link.md).
 - Public preview of [virtual endpoints and new promote to primary server](../read-replica/concepts-read-replicas.md) operation for read replica.
 - Public preview of Postgres [azure_ai](../azure-ai/generative-ai-azure-overview.md) extension.
-- Public preview of [pg_failover_slots](../extensions/concepts-extensions-versions.md#pg_failover_slots) extension.
+- Public preview of [pg_failover_slots](../extensions/concepts-extensions-considerations.md#pg_failover_slots) extension.
 - Public preview of [long-term backup retention](../backup-restore/concepts-backup-restore.md).
 
 ## Release: October 2023
