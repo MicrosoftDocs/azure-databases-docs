@@ -5,7 +5,7 @@ description: Learn how to use Azure Database for PostgreSQL to do in-place major
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/08/2026
+ms.date: 07/16/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -89,7 +89,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 In-place major version upgrades don't support all PostgreSQL extensions. The upgrade fails during the precheck if a blocked extension is present on an affected upgrade path. Most blocks are scoped to specific **target** (and sometimes **source**) versions rather than every upgrade, as noted in the following lists.
 
-- The following extensions **block an in-place major version upgrade on all upgrade paths**. Remove them before the upgrade and re-enable them after, if supported on the target version: `session_variable`, `anon`, `age`, `pg_duckdb`.
+- The following extensions **block an in-place major version upgrade on all upgrade paths**. Remove them before the upgrade and re-enable them after, if supported on the target version: `session_variable`, `anon`, `age`.
 - The following extensions are **non-persistent utility extensions** and must be dropped before the upgrade and re-created after, by design (all upgrade paths): `pg_repack`, `hypopg`, `pg_partman`.
 - The following extensions are blocked only on **specific version paths**. Remove them before the upgrade if your upgrade matches the listed condition, and re-enable them after if supported on the target version:
 
