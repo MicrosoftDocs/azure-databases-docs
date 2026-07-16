@@ -1,10 +1,11 @@
 ---
-title: "Transport Layer Security (TLS) in Azure Database for PostgreSQL flexible server Overview"
-description: Learn about secure connectivity with an Azure Database for PostgreSQL flexible server instance using TLS.
+title: Transport Layer Security (TLS) in Azure Database for PostgreSQL Flexible Server
+description: Learn about secure connectivity with an Azure Database for PostgreSQL flexible server using TLS.
+#customer intent: As a user, I want to understand how TLS secures connections to Azure Database for PostgreSQL flexible server, so that I can protect data in transit.
 author: Tameika-MSFT
 ms.author: talawren
 ms.reviewer: maghan
-ms.date: 12/19/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -60,7 +61,7 @@ A certificate chain is a hierarchical sequence of certificates issued by trusted
 
 ### Reducing connection failures
 
-Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting Intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
+Use the recommended TLS configurations to reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
 
 > [!IMPORTANT]
 > Microsoft announces changes in root CAs ahead of time to help you prepare your client applications. However, server certificate rotations and changes to intermediate CAs are routine and aren't announced.
@@ -132,7 +133,7 @@ All incoming connections that use earlier insecure versions of the TLS protocol,
 
 The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 1.3 is the recommended version since it's faster and more secure than TLS 1.2.
 
-Although we don't recommend it, if needed, you can disable TLS for connections to your Azure Database for PostgreSQL. You can update the `require_secure_transport` parameter to `OFF`.
+Although it's not recommended, if needed, you can disable TLS for connections to your Azure Database for PostgreSQL. You can update the `require_secure_transport` parameter to `OFF`.
 
 > [!IMPORTANT]
 > Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` parameter.

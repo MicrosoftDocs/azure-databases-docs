@@ -1,17 +1,17 @@
 ---
-title: Networking
+title: Networking in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to configure networking related settings of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to configure networking settings for my Azure Database for PostgreSQL flexible server, so that my server connects securely to the resources that need access.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/29/2025
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to configure network related settings of an Azure Database for PostgreSQL.
 ---
 
-# Networking
+# Networking in Azure Database for PostgreSQL flexible server
 
 When you deploy your Azure Database for PostgreSQL flexible server, you can choose between configuring its networking mode as **Public access (allowed IP addresses)** or as **Private access (VNET Integration)**.
 

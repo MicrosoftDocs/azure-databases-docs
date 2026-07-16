@@ -1,17 +1,17 @@
 ---
-title: Change private DNS zone
+title: Change Private DNS Zone in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to change the private DNS zone of your Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to change the private DNS zone of my existing Azure Database for PostgreSQL flexible server, so that I can use a different DNS zone than the one I set during server creation.
 author: milenak
 ms.author: mpopovic
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to change the private DNS zone of an Azure Database for PostgreSQL.
 ---
 
-# Change private DNS zone
+# Change private DNS zone in Azure Database for PostgreSQL flexible server
 
 [Azure Private DNS](/azure/dns/private-dns-overview) provides a reliable and secure DNS service for your virtual network. Azure Private DNS manages and resolves domain names in the virtual network, without the need to configure a custom DNS solution.
 
@@ -21,7 +21,7 @@ On existing servers, you can change the private DNS zone from the one that you p
 
 ## [Portal](#tab/portal-change-private-dns-zone)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 

@@ -1,5 +1,5 @@
 ---
-title: Scale Out With Elastic Clusters
+title: Scale Out With Elastic Clusters in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to scale out an Azure Database for PostgreSQL flexible server elastic cluster.
 author: JaredMSFT
 ms.author: jaredmeade
@@ -8,41 +8,40 @@ ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: scale-out
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to scale out an Azure Database for PostgreSQL elastic cluster.
 ---
 
-# Scale out with elastic clusters
+# Scale out with elastic clusters in Azure Database for PostgreSQL flexible server
 
-This article provides step-by-step instructions to perform horizontal scaling operations for your Azure Database for PostgreSQL flexible server elastic cluster.
+This article provides step-by-step instructions for performing horizontal scaling operations for your Azure Database for PostgreSQL flexible server elastic cluster.
 
 Azure Database for PostgreSQL Elastic Clusters provides horizontal scaling by adding more worker nodes to your cluster. When you scale your PostgreSQL Elastic Cluster, you can handle growth by giving your database more resources or more nodes for parallel query processing. You get all these benefits with minimal downtime and built-in shard management.
 
 ## Scale-out methods
 
-Use one of several methods to add worker nodes to your elastic cluster—including the Azure portal, the Azure CLI, or automation via ARM templates and APIs—depending on your workflow and automation needs. The following sections provide step‑by‑step instructions for the portal and CLI, and explain post‑scale rebalancing. 
+To add worker nodes to your elastic cluster, use one of several methods, including the Azure portal, the Azure CLI, or automation through ARM templates and APIs. Choose the method that best fits your workflow and automation needs. The following sections provide step-by-step instructions for the portal and CLI, and explain post-scale rebalancing. 
 
 #### [Portal](#tab/portal-scale-compute)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
-1. Open the resource: In the Azure portal, navigate to your Azure Database for PostgreSQL – Flexible Server elastic cluster.
+1. Open the resource: In the Azure portal, go to your Azure Database for PostgreSQL – Flexible Server elastic cluster.
 
-1. Go to Compute + Storage: Under the Settings section, select Compute + storage. This page displays the current configuration of your cluster's nodes.
+1. Go to Compute + Storage: Under the Settings section, select **Compute + storage**. This page shows the current configuration of your cluster's nodes.
 
    :::image type="content" source="./media/how-to-scale-out/overview.png" alt-text="Screenshot showing the Overview page of an elastic cluster." lightbox="./media/how-to-scale-out/overview.png":::
 
-1. Adjust Node Count: Find the Node count field. Increase the number to the desired total nodes (between 2 and 20 for most clusters at GA). For example, to double a four node cluster to eight nodes, increase the slider to 8. Azure provisions additional worker nodes to reach this count.
+1. Adjust Node Count: Find the **Node count** field. Increase the number to the desired total nodes (between 2 and 20 for most clusters at GA). For example, to double a four node cluster to eight nodes, increase the slider to 8. Azure provisions extra worker nodes to reach this count.
 
    :::image type="content" source="./media/how-to-scale-out/scale-out.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-out/scale-out.png":::
 
-1. Apply changes: Select Save. Confirm the scale-out operation when prompted. Azure begins adding nodes to your cluster. This operation is performed online and typically doesn't interrupt existing connections or queries. The deployment might take a few minutes. You can monitor progress in the portal notifications. Once complete, your cluster's node count reflects the new value.
+1. Apply changes: Select **Save**. Confirm the scale-out operation when prompted. Azure starts adding nodes to your cluster. This operation runs online and typically doesn't interrupt existing connections or queries. The deployment might take a few minutes. You can monitor progress in the portal notifications. When it's done, your cluster's node count shows the new value.
 
 > [!NOTE]
-> You must explicitly trigger the shard rebalancing background process to allow existing data to be redistributed across all of your nodes. This operation involves no downtime for reads and writes.
+> You must explicitly trigger the shard rebalancing background process to redistribute existing data across all of your nodes. This operation involves no downtime for reads and writes.
 
 #### [CLI](#tab/cli-scale-compute)
 
-You can initiate the horizontal scaling of your elastic cluster with the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+Use the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command to start the horizontal scaling of your elastic cluster.
 
 ```azurecli-interactive
 az postgres flexible-server update `
@@ -55,7 +54,7 @@ az postgres flexible-server update `
 
 ## Rebalancing
 
-After adding nodes to your cluster, any new data modifications or newly added distributed tables use all of the available nodes. Existing data shards stay where they are until they're redistributed. Online rebalancing ensures that reads and writes from the application continue with minimal interruption while data is being moved.
+After you add nodes to your cluster, new data modifications and newly added distributed tables use all of the available nodes. Existing data shards stay in their original location until they're redistributed. Online rebalancing ensures that reads and writes from the application continue with minimal interruption while data is being moved.
 
 When you scale out your elastic cluster, rebalancing your cluster ensures that your existing data is fully distributed and your database uses all available nodes. Use the **citus_rebalance_start** function to start the rebalance process. This operation distributes existing data evenly across all nodes.
 
@@ -99,4 +98,4 @@ By using the preceding scaling techniques, Azure Database for PostgreSQL elastic
 
 - [Compute options](../compute-storage/concepts-compute.md)
 - [Limits in Azure Database for PostgreSQL flexible server](../configure-maintain/concepts-limits.md)
-- [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)
+- [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).

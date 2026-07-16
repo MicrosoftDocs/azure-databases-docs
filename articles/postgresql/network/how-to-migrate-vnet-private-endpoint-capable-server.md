@@ -1,16 +1,17 @@
 ---
-title: Migrate from VNet to a Private Endpoint Capable Network Configuration
+title: Migrate from Virtual Network to a Private Endpoint Capable Network Configuration in Azure Database for PostgreSQL Flexible Server (Preview)
 description: Learn how to migrate Azure Database for PostgreSQL from a VNet deployment to a network configuration that supports private endpoint connectivity.
+#customer intent: As a user, I want to migrate my Azure Database for PostgreSQL flexible server from a virtual network deployment to a private endpoint capable configuration, so that I can gain more flexibility in my network design while keeping private connectivity.
 author: milenak
 ms.author: mpopovic
-ms.reviewer: maghan, ignacioal
-ms.date: 03/31/2026
+ms.reviewer: maghan, ialonso
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
 ---
 
-# Migrate from VNet to a Private Endpoint Capable Network Configuration (Preview)
+# Migrate from virtual network to a private endpoint capable network configuration in Azure Database for PostgreSQL flexible server (Preview)
 
 Azure Database for PostgreSQL deployed with [private access](concepts-networking-private.md) uses [virtual network injection](/azure/virtual-network/virtual-network-for-azure-services) to place the server in a delegated subnet within your virtual network. You can migrate these servers to a network configuration that supports private endpoints. Private endpoints provide secure connectivity through Azure Private Link, so you can access your server over a private IP address within your virtual network. This migration replaces VNet-injected networking with private endpoint support, giving you more flexibility in network design while maintaining private connectivity.
 

@@ -1,23 +1,23 @@
 ---
-title: Add firewall rules
+title: Add Firewall Rules in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to add firewall rules to an Azure Database for PostgreSQL flexible server.
-author: techlake
-ms.author: hganten
+#customer intent: As a user, I want to add firewall rules to my Azure Database for PostgreSQL flexible server so that I can control which IP addresses can connect to it.
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to add firewall rules to an Azure Database for PostgreSQL.
 ---
 
-# Add firewall rules
+# Add firewall rules in Azure Database for PostgreSQL flexible server
 
 When you enable public access, set up firewall rules that allow connections from specific IP addresses or from any Azure service.
 
 ## [Portal](#tab/portal-add-firewall-rules)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 

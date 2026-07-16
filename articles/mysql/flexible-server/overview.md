@@ -34,7 +34,7 @@ These capabilities require no extra cost and almost no administration. They allo
 
 Azure Database for MySQL flexible server also supports reserved instances. If your production workloads have predictable compute capacity requirements, reserved instances can help you save costs.
 
-For the latest updates on Azure Database for MySQL flexible server, see [What's new in Azure Database for MySQL?](whats-new.md)
+For the latest updates on Azure Database for MySQL flexible server, see [What's new in Azure Database for MySQL?](../whats-new/whats-new-2026.md)
 
 :::image type="content" source="media/overview/azure-db-for-mysql-conceptual-diagram.png" alt-text="Diagram that shows the relationship between Azure database services and MySQL." lightbox="media/overview/azure-db-for-mysql-conceptual-diagram.png":::
 

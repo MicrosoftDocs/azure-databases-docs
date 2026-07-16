@@ -1,21 +1,22 @@
 ---
-title: Azure CLI Script - Scale and Monitor
-description: Azure CLI Script Sample - Scale an Azure Database for PostgreSQL flexible server instance to a different performance level after querying the metrics.
+title: Monitor and Scale a Server by Using Azure CLI in Azure Database for PostgreSQL Flexible Server
+description: Azure CLI Script Sample - Scale an Azure Database for PostgreSQL flexible server to a different performance level after querying the metrics.
+#customer intent: As a user, I want to scale the compute of my PostgreSQL flexible server by using Azure CLI, so that I can match performance to my workload demands.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: how-to
 ms.devlang: azurecli
 ---
-# Monitor and scale a single Azure Database for PostgreSQL flexible server instance using Azure CLI
+# Monitor and scale a server by using Azure CLI in Azure Database for PostgreSQL flexible server
 
-This sample CLI script scales compute and storage for a single Azure Database for PostgreSQL flexible server instance after querying the metrics. Compute can scale up or down. Storage can only scale up.
+This sample CLI script scales compute and storage for a single Azure Database for PostgreSQL flexible server after querying the metrics. You can scale compute up or down. You can only scale storage up.
 
 > [!IMPORTANT]  
-> Storage can only be scaled up, not down.
+> You can only scale storage up, not down.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
@@ -43,9 +44,9 @@ This script uses the commands outlined in the following table:
 
 | **Command** | **Notes** |
 | --- | --- |
-| [az group create](/cli/azure/group) | Creates a resource group in which all resources are stored. |
-| [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure Database for PostgreSQL flexible server instance that hosts the databases. |
-| [az postgres server update](/cli/azure/postgres/server#az-postgres-server-update) | Updates properties of the Azure Database for PostgreSQL flexible server instance. |
+| [az group create](/cli/azure/group) | Creates a resource group that stores all resources. |
+| [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure Database for PostgreSQL flexible server that hosts the databases. |
+| [az postgres server update](/cli/azure/postgres/server#az-postgres-server-update) | Updates properties of the Azure Database for PostgreSQL flexible server. |
 | [az monitor metrics list](/cli/azure/monitor/metrics) | Lists the metric value for the resources. |
 | [az group delete](/cli/azure/group) | Deletes a resource group including all nested resources. |
 

@@ -16,55 +16,33 @@
     - name: Overview
       expanded: true
       items:
-        - name: What's new?
-          href: flexible-server/whats-new.md
-        - name: Previous features
-          href: flexible-server/whats-new-archive.md
+        - name: What's new
+          items:
+            - name: 2026
+              href: whats-new/whats-new-2026.md
+            - name: 2025
+              href: whats-new/whats-new-2025.md
+            - name: 2024
+              href: whats-new/whats-new-2024.md
+            - name: 2023
+              href: whats-new/whats-new-2023.md
+            - name: 2022
+              href: whats-new/whats-new-2022.md
+            - name: 2021
+              href: whats-new/whats-new-2021.md
         - name: Release notes
           items:
-            - name: Release notes index
-              href: flexible-server/release-notes/release-notes-index.md
-            - name: July 2026
-              href: flexible-server/release-notes/july-2026.md
-            - name: May 2026
-              href: flexible-server/release-notes/may-2026.md
-            - name: March 2026
-              href: flexible-server/release-notes/march-2026.md              
-            - name: January 2026
-              href: flexible-server/release-notes/january-2026.md
-            - name: October 2025
-              href: flexible-server/release-notes/october-2025.md
-            - name: September 2025
-              href: flexible-server/release-notes/september-2025.md
-            - name: July 2025
-              href: flexible-server/release-notes/july-2025.md
-            - name: May 2025
-              href: flexible-server/release-notes/may-2025.md
-            - name: March 2025
-              href: flexible-server/release-notes/march-2025.md
-            - name: February 2025
-              href: flexible-server/release-notes/february-2025.md
-            - name: October 2024
-              href: flexible-server/release-notes/october-2024.md
-            - name: September 2024
-              href: flexible-server/release-notes/september-2024.md
-            - name: August 2024
-              href: flexible-server/release-notes/august-2024.md
-            - name: June 2024
-              href: flexible-server/release-notes/june-2024.md
-            - name: May 2024
-              href: flexible-server/release-notes/may-2024.md
-            - name: April 2024
-              href: flexible-server/release-notes/april-2024.md
-            - name: February 2024
-              href: flexible-server/release-notes/february-2024.md
-            - name: January 2024
-              href: flexible-server/release-notes/january-2024.md
+            - name: 2026
+              href: release-notes/release-notes-2026.md
+            - name: 2025
+              href: release-notes/release-notes-2025.md
+            - name: 2024
+              href: release-notes/release-notes-2024.md
         - name: Service tiers
           href: flexible-server/concepts-service-tiers-storage.md
     - name: Quickstarts
       items:
-        - name: Create an Azure Database for MySQL - Flexible Server instance
+        - name: Create an Azure Database for MySQL flexible server instance
           items:
             - name: Azure portal
               href: flexible-server/quickstart-create-server-portal.md
@@ -404,14 +382,14 @@
   items:
     - name: FAQ
       href: migrate/how-to-decide-on-right-migration-tools.md
-    - name: Migrate data from MySQL on-premises to Azure Database for MySQL - Flexible Server
+    - name: Migrate data from MySQL on-premises to Azure Database for MySQL flexible server
       href: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
     - name: Migrate MySQL on-premises or VM workload using Azure MySQL Import CLI
       href: migrate/migrate-external-mysql-import-cli.md
     - name: Migrate data with mysqldump or phpmyadmin
       href: flexible-server/concepts-migrate-dump-restore.md
       displayName: migrate, mysqldump
-    - name: Migrate large databases to Azure Database for MySQL - Flexible Server using mydumper/myloader
+    - name: Migrate large databases to Azure Database for MySQL flexible server using mydumper/myloader
       href: migrate/concepts-migrate-mydumper-myloader.md
       displayName: migrate, mydumper/myloader
     - name: Migrate data with MySQL Workbench

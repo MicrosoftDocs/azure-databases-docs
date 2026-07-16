@@ -1,17 +1,17 @@
 ---
-title: Delete private endpoint connections
+title: Delete Private Endpoint Connections in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to delete private endpoint connections to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to delete a private endpoint connection to my Azure Database for PostgreSQL flexible server, so that I can remove access that's no longer needed.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to delete private endpoint connections to an Azure Database for PostgreSQL.
 ---
 
-# Delete private endpoint connections
+# Delete private endpoint connections in Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL flexible server is an Azure Private Link service. This feature enables you to create private endpoints so your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
@@ -21,7 +21,7 @@ For more information about Azure Private Link and Azure Private Endpoint, see [A
 
 ## [Portal](#tab/portal-delete-private-endpoint-connections)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 

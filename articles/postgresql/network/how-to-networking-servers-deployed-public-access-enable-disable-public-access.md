@@ -1,6 +1,7 @@
 ---
-title: Enable or disable public access
+title: Enable or Disable Public Access in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to disable public access in an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to disable public access to my Azure Database for PostgreSQL flexible server, so that I can restrict connectivity to private endpoints only.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -8,22 +9,21 @@ ms.date: 06/09/2025
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to enabled or disable public network access in an Azure Database for PostgreSQL.
 ---
 
-# Enable or disable public access
+# Enable or disable public access in Azure Database for PostgreSQL flexible server
 
-If you disable public access, connectivity to the server is only possible via private endpoints.
+If you disable public access, you can connect to the server only through private endpoints.
 
 You must configure those private endpoints so that hosts that can route traffic to the Azure virtual network in which you inject the private endpoints, can access your Azure Database for PostgreSQL flexible server.
 
-When public access is disabled, any firewall rules you created while public access was enabled, aren't enforced.
+When you disable public access, the firewall rules you created while public access was enabled aren't enforced.
 
-Also, any modifications made to the firewall rules are discarded.
+Also, any modifications you made to the firewall rules are discarded.
 
 ## [Portal](#tab/portal-enable-disable-public-access)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -58,7 +58,7 @@ az postgres flexible-server update \
   --public-access enabled
 ```
 
-You can disable public access on a server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+To disable public access on a server, use the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
 az postgres flexible-server update \
@@ -76,7 +76,7 @@ Message: Server <server> is busy with other operations. Please try later
 
 If you try to enable or disable public access on a server that wasn't deployed with networking mode public access (allowed IP addresses), you don't get an error. The request to change that configuration is ignored.
 
-To determine if a server has public access disabled or enabled, run the following command:
+To check if a server has public access disabled or enabled, run the following command:
 
 ```azurecli-interactive
 az postgres flexible-server show \

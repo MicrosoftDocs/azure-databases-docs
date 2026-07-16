@@ -1,31 +1,32 @@
 ---
-title: Security and Compliance Certifications
-description: Learn about compliance in the deployment options for Azure Database for PostgreSQL flexible server instances.
+title: Security and Compliance Certifications in Azure Database for PostgreSQL Flexible Server
+description: Learn about compliance in the deployment options for Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to review the certifications that Azure Database for PostgreSQL flexible server holds, so that I can confirm it meets my organization's regulatory obligations.
 author: Tameika-MSFT
 ms.author: talawren
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Security and compliance certifications in Azure Database for PostgreSQL flexible server 
+# Security and compliance certifications in Azure Database for PostgreSQL flexible server
 
-Customers experience an increasing demand for highly secure and compliant solutions as they face data breaches along with requests from governments to access online customer information. Important regulatory requirements such as [General Data Protection Regulation (GDPR)](/compliance/regulatory/gdpr) and [Sarbanes-Oxley (SOX)](/compliance/regulatory/offering-sox) make selecting cloud services that help customers achieve trust, transparency, security, and compliance essential.
+As data breaches and government requests for online customer information increase, you need highly secure and compliant solutions. Important regulatory requirements such as [General Data Protection Regulation (GDPR)](/compliance/regulatory/gdpr) and [Sarbanes-Oxley (SOX)](/compliance/regulatory/offering-sox) make it essential to select cloud services that help you achieve trust, transparency, security, and compliance.
 
-To help customers meet their compliance obligations across regulated industries and markets worldwide, Azure Database for PostgreSQL builds on the Microsoft Azure compliance offerings to provide rigorous compliance certifications. Azure maintains the largest compliance portfolio in the industry in terms of both breadth (total number of offerings) and depth (number of customer-facing services in the assessment scope).
+To help you meet your compliance obligations across regulated industries and markets worldwide, Azure Database for PostgreSQL builds on the Microsoft Azure compliance offerings to provide rigorous compliance certifications. Azure maintains the largest compliance portfolio in the industry in terms of both breadth (total number of offerings) and depth (number of customer-facing services in the assessment scope).
 
 Azure compliance offerings are grouped into four segments: globally applicable, US government, industry specific, and region/country specific. Compliance offerings are based on various types of assurances, including:
 
 - Formal certifications, attestations, validations, authorizations, and assessments produced by independent auditing firms.
 - Contractual amendments, self-assessments, and customer guidance documents produced by Microsoft.
 
-More detailed information about Azure compliance offerings is available from the [Microsoft Trust Center](https://www.microsoft.com/trust-center/compliance/compliance-overview).
+For more detailed information about Azure compliance offerings, see the [Microsoft Trust Center](https://www.microsoft.com/trust-center/compliance/compliance-overview).
 
-## Azure Database for PostgreSQL  compliance certifications
+## Azure Database for PostgreSQL flexible server compliance certifications
 
-Azure Database for PostgreSQL has achieved a comprehensive set of national/regional and industry-specific compliance certifications in the Azure public cloud. These certifications help you comply with requirements that govern the collection and use of data.
+Azure Database for PostgreSQL in the Azure public cloud meets a comprehensive set of national, regional, and industry-specific compliance certifications. These certifications help you comply with requirements that govern the collection and use of data.
 
 | Certification                | Applicable to                                                                                   |
 |------------------------------|------------------------------------------------------------------------------------------------|

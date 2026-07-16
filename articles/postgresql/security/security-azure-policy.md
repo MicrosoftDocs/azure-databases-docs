@@ -1,26 +1,27 @@
 ---
-title: Azure Policy Support
-description: Learn how to use Azure Policy to secure Azure Database for PostgreSQL
+title: Azure Policy Support in Azure Database for PostgreSQL Flexible Server
+description: Learn how to use Azure Policy to secure Azure Database for PostgreSQL flexible server
+#customer intent: As a user, I want to enforce organizational standards on my PostgreSQL flexible servers, so that I can maintain compliance at scale.
 author: Tameika-MSFT
 ms.author: talawren
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Azure Policy Support for Azure Database for PostgreSQL flexible server
+# Azure policy support in Azure Database for PostgreSQL flexible server
 
 [Azure Policy](/azure/governance/policy/overview) helps you enforce organizational standards and assess compliance at scale. Through its compliance dashboard, it provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to the per-resource, per-policy granularity. It also helps bring your resources to compliance through bulk remediation for existing resources and automatic remediation for new resources.
 
-## Built-in Policy Definitions
+## Built-in policy definitions
 
 Microsoft develops and tests built-in policies to ensure they meet common standards and best practices. You can deploy them quickly without needing extra configuration, making them ideal for standard compliance requirements. Built-in policies often cover widely recognized standards and compliance frameworks.
 
 The following section provides an index of Azure Policy built-in policy definitions for Azure Database for PostgreSQL. Use the link in the **Source** column to view the source on the Azure Policy GitHub repo.
 
-| **Name (Azure Portal)** | **Description** | **Effect(s)** | **Version(GitHub)** |
+| **Name (Azure Portal)** | **Description** | **Effects** | **Version(GitHub)** |
 | --- | --- | --- | --- |
 | [A Microsoft Entra administrator should be provisioned for PostgreSQL flexible server instances](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fce39a96d-bf09-4b60-8c32-e85d52abea0f) | Audit provisioning of a Microsoft Entra administrator for your PostgreSQL flexible server instance to enable Microsoft Entra authentication. Microsoft Entra authentication enables simplified permission management and centralized identity management of database users and other Microsoft services | AuditIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_ProvisionEntraAdmin_AINE.json) |
 | [Auditing with PgAudit should be enabled for PostgreSQL flexible server instances](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4eb5e667-e871-4292-9c5d-8bbb94e0c908) | This policy helps audit any PostgreSQL flexible server instances in your environment, which isn't enabled to use pgaudit. | AuditIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_EnablePgAudit_AINE.json) |

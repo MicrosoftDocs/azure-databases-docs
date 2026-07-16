@@ -1,23 +1,23 @@
 ---
-title: Delete firewall rules
+title: Delete firewall rules in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to delete firewall rules to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to delete firewall rules in Azure Database for PostgreSQL flexible server, so that I can remove access for IP addresses that no longer need to connect.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/09/2025
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to delete firewall rules to an Azure Database for PostgreSQL.
 ---
 
-# Delete firewall rules
+# Delete firewall rules in Azure Database for PostgreSQL flexible server
 
-With public access enabled, you can configure firewall rules to allow connections originating from specific IP addresses, or from any Azure service.
+When you enable public access, you can set up firewall rules that allow connections from specific IP addresses or from any Azure service.
 
 ## [Portal](#tab/portal-delete-firewall-rules)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -50,7 +50,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## [CLI](#tab/cli-delete-firewall-rules)
 
-You can delete firewall rules from a server via the [az postgres flexible-server firewall-rule delete](/cli/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-delete) command.
+You can delete firewall rules from a server by using the [az postgres flexible-server firewall-rule delete](/cli/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-delete) command.
 
 ```azurecli-interactive
 az postgres flexible-server firewall-rule delete \
@@ -59,7 +59,7 @@ az postgres flexible-server firewall-rule delete \
   --name <rule>
 ```
 
-If you attempt to delete a firewall rule on a server which isn't in `Ready` state, you receive an error like this:
+If you try to delete a firewall rule on a server that isn't in the `Ready` state, you receive an error like this:
 
 ```output
 Code: InternalServerError
@@ -69,13 +69,13 @@ Message: An unexpected error occured while processing the request. Tracking ID: 
 > [!NOTE]
 > Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-`, and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.
 
-If you attempt to delete a firewall rule with an invalid name, you receive an error like this:
+If you try to delete a firewall rule with an invalid name, you receive an error like this:
 
 ```output
 The firewall rule name can only contain 0-9, a-z, A-Z, '-' and '_'. Additionally, the name of the firewall rule must be at least 3 characters and no more than 128 characters in length. 
 ```
 
-If you attempt to remove a firewall rule from a server that doesn't have public access enabled, you receive an error like this:
+If you try to remove a firewall rule from a server that doesn't have public access enabled, you receive an error like this:
 
 ```output
 Firewall rule operations cannot be requested for a private access enabled server.

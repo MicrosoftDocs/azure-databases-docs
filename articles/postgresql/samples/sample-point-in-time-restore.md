@@ -1,19 +1,20 @@
 ---
-title: Azure CLI Script - Restore
-description: This sample Azure CLI script shows how to restore an Azure Database for PostgreSQL flexible server instance and its databases to a previous point in time.
+title: Restore a Server by Using Azure CLI in Azure Database for PostgreSQL Flexible Server
+description: This sample Azure CLI script shows how to restore an Azure Database for PostgreSQL flexible server and its databases to a previous point in time.
+#customer intent: As a user, I want to restore an Azure Database for PostgreSQL flexible server to a previous point in time by using Azure CLI, so that I can recover data lost from an accidental change.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: how-to
 ms.devlang: azurecli
 ---
 
-# Restore an Azure Database for PostgreSQL flexible server instance using Azure CLI
+# Restore a server by using Azure CLI in Azure Database for PostgreSQL flexible server
 
-This sample CLI script restores a single Azure Database for PostgreSQL flexible server instance to a previous point in time.
+This sample CLI script restores a single Azure Database for PostgreSQL flexible server to a previous point in time.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
@@ -42,7 +43,7 @@ This script uses the commands outlined in the following table:
 | **Command** | **Notes** |
 | --- | --- |
 | [az group create](/cli/azure/group) | Creates a resource group in which all resources are stored. |
-| [az postgresql server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure Database for PostgreSQL flexible server instance that hosts the databases. |
+| [az postgresql server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure Database for PostgreSQL flexible server that hosts the databases. |
 | [az postgresql server restore](/cli/azure/postgres/server#az-postgres-server-restore) | Restore a server from backup. |
 | [az group delete](/cli/azure/group) | Deletes a resource group including all nested resources. |
 

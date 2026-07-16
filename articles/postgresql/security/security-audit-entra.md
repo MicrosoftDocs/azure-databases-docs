@@ -1,15 +1,17 @@
 ---
-title: Audit Logging for Microsoft Entra ID Principals
+title: Audit Logging for Microsoft Entra ID Principals in Azure Database for PostgreSQL Flexible Server
 description: Learn how to attribute actions to specific Microsoft Entra ID users in PostgreSQL audit logs.
+#customer intent: As a user, I want to attribute audit log actions to individual Microsoft Entra ID users, so that I can identify who performed each action even when they sign in through a group.
 author: milenak
 ms.author: mpopovic
-ms.date: 12/19/2025
+ms.reviewer: maghan
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
 ---
 
-# Audit logging in Azure Database for PostgreSQL flexible server for Microsoft Entra ID principals
+# Audit logging for Microsoft Entra ID principals in Azure Database for PostgreSQL flexible server
 
 Database audits are an important component of your organization's compliance requirements. By monitoring targeted activities, you can achieve your security baseline. In Azure Database for PostgreSQL flexible server, you can set up audits by using the pgaudit PG extension, as described in [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md).
 
