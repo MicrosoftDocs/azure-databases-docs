@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 06/29/2026
+ms.date: 07/16/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -600,25 +600,6 @@ Read the special considerations for extension [pgcrypto](../concepts-extensions-
 | 13 | Not supported |
 | 12 | Not supported |
 | 11 | Not supported |
-
-
-## pg_duckdb
-
-[pg_duckdb](https://github.com/duckdb/pg_duckdb) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.1.0 <sup>*</sup> |
-| 17 | 1.1.0 <sup>*</sup> |
-| 16 | 1.1.0 <sup>*</sup> |
-| 15 | 1.1.0 <sup>*</sup> |
-| 14 | 1.1.0 <sup>*</sup> |
-| 13 | Not supported |
-| 12 | Not supported |
-| 11 | Not supported |
-
-<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
-## pg_failover_slots
 
 [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes.
 

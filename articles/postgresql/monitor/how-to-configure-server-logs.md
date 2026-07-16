@@ -1,17 +1,17 @@
 ---
-title: Download PostgreSQL and upgrade logs
+title: Download PostgreSQL and Upgrade Logs in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to configure, list, and download PostgreSQL and upgrade logs.
+#customer intent: As a user, I want to enable server log capture in Azure Database for PostgreSQL flexible server, so that I can download logs for troubleshooting.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/26/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to configure, list, and download PostgreSQL and upgrade logs.
 ---
 
-# Download PostgreSQL and upgrade logs
+# Download PostgreSQL and upgrade logs in Azure Database for PostgreSQL flexible server
 
 You can use PostgreSQL server logs to diagnose specific issues experienced in an Azure Database for PostgreSQL flexible server, and to gain detailed insights about the activities that run on your servers. Use major version upgrade logs to troubleshoot errors that might occur during an attempt to upgrade your server to a higher major version of PostgreSQL.
 
@@ -23,7 +23,7 @@ This article explains how to enable and disable the feature. It also describes h
 
 ### [Portal](#tab/portal-enable-capture-of-logs)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -94,7 +94,7 @@ Message: The value: [<value>] of Parameter: [logfiles.retention_days] is invalid
 
 ### [Portal](#tab/portal-disable-capture-of-logs)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -138,7 +138,7 @@ az postgres flexible-server parameter \
 
 ### [Portal](#tab/portal-list-captured-logs)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -203,7 +203,7 @@ az postgres flexible-server-logs list \
 
 ### [Portal](#tab/portal-download-captured-logs)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 

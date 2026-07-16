@@ -1,16 +1,17 @@
 ---
-title: Show Virtual Endpoints
+title: Show Virtual Endpoints in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to show virtual endpoints for an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to view the virtual endpoints for my Azure Database for PostgreSQL flexible server, so that I can confirm which servers the reader and writer endpoints point to.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan, randolphwest
-ms.date: 06/23/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: how-to
 ---
 
-# Show virtual endpoints
+# Show virtual endpoints in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to show virtual endpoints associated with an Azure Database for PostgreSQL flexible server.
 
@@ -18,7 +19,7 @@ This article provides step-by-step instructions to show virtual endpoints associ
 
 ### [Portal](#tab/portal-show-virtual-endpoints)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select the Azure Database for PostgreSQL flexible server for which you want to show its associated virtual endpoints.
 

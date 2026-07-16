@@ -5,7 +5,7 @@ description: Guide on using script activity in the Azure Database for PostgreSQL
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 07/15/2026
+ms.date: 07/16/2026
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to

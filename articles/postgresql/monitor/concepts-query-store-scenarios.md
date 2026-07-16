@@ -1,20 +1,19 @@
 ---
-title: Usage scenarios for query store
-description: This article describes some usage scenarios for query store in an Azure Database for PostgreSQL flexible server instance.
+title: Usage Scenarios for Query Store in Azure Database for PostgreSQL Flexible Server
+description: This article describes some usage scenarios for query store in an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to identify the longest running queries in my PostgreSQL flexible server, so that I can free up resources and improve overall workload performance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/26/2025
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
-ms.custom:
-  - ignite-2024
 ms.topic: concept-article
 ---
 
-# Usage scenarios for query store
+# Usage scenarios for query store in Azure Database for PostgreSQL flexible server
 
-You can use query store in a wide variety of scenarios in which tracking and maintaining predictable workload performance is critical. Consider the following examples:
+You can use query store in a wide variety of scenarios where tracking and maintaining predictable workload performance is critical. Consider the following examples:
 - Identify and tune expensive queries.
 - Perform A/B testing.
 - Identify and improve improvised workloads.
@@ -23,11 +22,11 @@ You can use query store in a wide variety of scenarios in which tracking and mai
 
 ### Identify long running queries
 
-Use query store views on the `azure_sys` database of your server, to quickly identify the longest running queries. These queries tend to consume the most resources. Optimizing your longest running queries can improve performance by freeing up resources used by other queries running on your system.
+Use query store views on the `azure_sys` database of your server to quickly identify the longest running queries. These queries tend to consume the most resources. Optimizing your longest running queries can improve performance by freeing up resources used by other queries running on your system.
 
 ### Target queries with performance deltas
 
-Query store slices the performance data into time windows, so you can track the performance of a query over time. This helps you identify exactly which queries are contributing to an increase in overall time spent. As a result you can do scoped troubleshooting of your workload.
+Query store slices the performance data into time windows, so you can track the performance of a query over time. This feature helps you identify exactly which queries are contributing to an increase in overall time spent. As a result, you can troubleshoot your workload.
 
 ### Tune expensive queries
 

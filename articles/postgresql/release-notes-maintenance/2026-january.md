@@ -4,7 +4,7 @@ description: Learn about the maintenance release notes for Azure Database for Po
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 03/09/2026
+ms.date: 07/16/2026
 ms.service: azure-database-postgresql
 ms.topic: release-notes
 ---
@@ -24,7 +24,6 @@ This new version introduces a range of new features and enhancements, resolves k
 ## Features
 
 - credcheck extension is now available. Enforce password and credential validation policies directly within PostgreSQL by using credcheck.
-- pg_duckdb extension **(Public Preview)** is now available. Accelerate analytics by using DuckDB’s vectorized, columnar execution.
 - anon extension is now available. Enhance data anonymization capabilities for protecting sensitive information in your databases.
 - Support for PG18 as a target PG version for migrations.
 - Support for Apache AGE 1.6.0 extension in PostgreSQL 16.
