@@ -1,30 +1,30 @@
 ---
-title: Monitor using Metrics and Logs in Azure Database for PostgreSQL flexible server
+title: Monitor Using Metrics and Logs in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to monitor using metrics and logs in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to view the available metrics for my PostgreSQL flexible server, so that I can understand how my server is performing.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
-ai-usage: ai-assisted
 ---
 
-# Monitor using metrics and logs
+# Monitor using metrics and logs in Azure Database for PostgreSQL flexible server
 
-Monitoring data about your servers helps you troubleshoot and optimize for your workload. Your Azure Database for PostgreSQL flexible server instance provides various monitoring options to give you insight into how your server is performing.
+Monitoring data about your servers helps you troubleshoot and optimize for your workload. Your Azure Database for PostgreSQL flexible server provides various monitoring options to give you insight into how your server is performing.
 
 ## Metrics
 
-Azure Database for PostgreSQL provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a one-minute interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
+Azure Database for PostgreSQL provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server. Each metric is emitted at a one-minute interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 
 > [!NOTE]  
 > While metrics are stored for 93 days, you can only query (in the Metrics tile) for a maximum of 30 days' worth of data on any single chart. If you see a blank chart or your chart displays only part of metric data, verify that the difference between start and end dates in the time picker doesn't exceed the 30-day interval. After you select a 30-day interval, you can pan the chart to view the full retention window.
 
 ### Default metrics
 
-The following metrics are available for an Azure Database for PostgreSQL flexible server instance:
+The following metrics are available for an Azure Database for PostgreSQL flexible server:
 
 | Display name | Metric ID | Unit | Description | Default enabled |
 | --- | --- | --- | --- | --- |
@@ -40,8 +40,8 @@ The following metrics are available for an Azure Database for PostgreSQL flexibl
 | **IOPS** | `iops` | Count | Number of I/O operations to disk per second. | Yes |
 | **Maximum Used Transaction IDs** | `maximum_used_transactionIDs` | Count | Maximum number of transaction identifiers in use. | Yes |
 | **Memory percent** | `memory_percent` | Percent | Percentage of memory in use. | Yes |
-| **Network Out** | `network_bytes_egress` | Bytes | Total sum of outgoing network traffic on the server for a selected period. This metric includes outgoing traffic from your database and from an Azure Database for Postgres flexible server instance, including features like monitoring, logs, WAL archive, replication, and more. | Yes |
-| **Network In** | `network_bytes_ingress` | Bytes | Total sum of incoming network traffic on the server for a selected period. This metric includes incoming traffic to your database and to an Azure Database for Postgres flexible server instance, including features like monitoring, logs, WAL archive, replication, and more. | Yes |
+| **Network Out** | `network_bytes_egress` | Bytes | Total sum of outgoing network traffic on the server for a selected period. This metric includes outgoing traffic from your database and from an Azure Database for Postgres flexible server, including features like monitoring, logs, WAL archive, replication, and more. | Yes |
+| **Network In** | `network_bytes_ingress` | Bytes | Total sum of incoming network traffic on the server for a selected period. This metric includes incoming traffic to your database and to an Azure Database for Postgres flexible server, including features like monitoring, logs, WAL archive, replication, and more. | Yes |
 | **Read IOPS ^** | `read_iops` | Count | Number of data disk I/O read operations per second. | Yes |
 | **Read Throughput ^** | `read_throughput` | Bytes | Bytes read per second from disk. | Yes |
 | **Storage Free** | `storage_free` | Bytes | Amount of storage space that's available. | Yes |
@@ -56,12 +56,12 @@ The following metrics are available for an Azure Database for PostgreSQL flexibl
 
 ### Enhanced metrics
 
-Use enhanced metrics for your Azure Database for PostgreSQL flexible server instance to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
+Use enhanced metrics for your Azure Database for PostgreSQL flexible server to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
 
 #### Enabling enhanced metrics
 
 - Most of these new metrics are *disabled* by default. The rightmost column in the following tables indicates whether each metric is enabled by default or not. A few metrics are enabled by default.
-- To enable metrics that aren't enabled by default, set the parameter `metrics.collector_database_activity` to `ON`. This parameter is dynamic and doesn't require an instance restart.
+- To enable metrics that aren't enabled by default, set the parameter `metrics.collector_database_activity` to `ON`. This parameter is dynamic and doesn't require a server restart.
 
 ##### List of enhanced metrics
 
@@ -149,13 +149,13 @@ Choose from the following categories of enhanced metrics:
 
 ### Autovacuum metrics
 
-Use autovacuum metrics to monitor and tune autovacuum performance for your Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
+Use autovacuum metrics to monitor and tune autovacuum performance for your Azure Database for PostgreSQL flexible server. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
 
 #### How to enable autovacuum metrics
 
 - Autovacuum metrics are disabled by default.
 - To enable these metrics, set the parameter `metrics.autovacuum_diagnostics` to `ON`.
-- This parameter is dynamic, so an instance restart isn't required.
+- This parameter is dynamic, so a server restart isn't required.
 
 #### List of autovacuum metrics
 
@@ -188,17 +188,17 @@ Use PgBouncer metrics to monitor the performance of the PgBouncer process. These
 #### How to enable PgBouncer metrics
 
 - To monitor PgBouncer metrics, ensure that the [pgbouncer](../connectivity/concepts-pgbouncer.md) feature is enabled through the parameter `pgbouncer.enabled` and enable the metrics parameter `metrics.pgbouncer_diagnostics`.
-- These parameters are dynamic and don't require an instance restart.
+- These parameters are dynamic and don't require a server restart.
 - PgBouncer metrics are disabled by default.
 
 #### List of PgBouncer metrics
 
 | Display name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
-| **Active client connections** | `client_connections_active` | Count | Connections from clients that are associated with an Azure Database for PostgreSQL flexible server instance connection. | DatabaseName | No |
-| **Waiting client connections** | `client_connections_waiting` | Count | Connections from clients that are waiting for an Azure Database for PostgreSQL flexible server instance connection to service them. | DatabaseName | No |
-| **Active server connections** | `server_connections_active` | Count | Connections to an Azure Database for PostgreSQL flexible server instance that are in use by a client connection. | DatabaseName | No |
-| **Idle server connections** | `server_connections_idle` | Count | Connections to an Azure Database for PostgreSQL flexible server instance that are idle and ready to service a new client connection. | DatabaseName | No |
+| **Active client connections** | `client_connections_active` | Count | Connections from clients that are associated with an Azure Database for PostgreSQL flexible server connection. | DatabaseName | No |
+| **Waiting client connections** | `client_connections_waiting` | Count | Connections from clients that are waiting for an Azure Database for PostgreSQL flexible server connection to service them. | DatabaseName | No |
+| **Active server connections** | `server_connections_active` | Count | Connections to an Azure Database for PostgreSQL flexible server that are in use by a client connection. | DatabaseName | No |
+| **Idle server connections** | `server_connections_idle` | Count | Connections to an Azure Database for PostgreSQL flexible server that are idle and ready to service a new client connection. | DatabaseName | No |
 | **Total pooled connections** | `total_pooled_connections` | Count | Current number of pooled connections. | DatabaseName | No |
 | **Number of connection pools** | `num_pools` | Count | Total number of connection pools. | DatabaseName | No |
 
@@ -210,7 +210,7 @@ Use PgBouncer metrics to monitor the performance of the PgBouncer process. These
 
 ### Database availability metric
 
-The `is-db-alive` metric is a database server availability metric for an Azure Database for PostgreSQL flexible server instance. It returns `1` for available and `0` for not available. Each metric is emitted at a one-minute frequency and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metric.
+The `is-db-alive` metric is a database server availability metric for an Azure Database for PostgreSQL flexible server. It returns `1` for available and `0` for not available. Each metric is emitted at a one-minute frequency and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metric.
 
 | Display Name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
@@ -244,7 +244,7 @@ You can use several options to visualize Azure Monitor metrics. For most routine
 | Overview page | Most Azure services include an **Overview** page in the Azure portal with a **Monitor** section that shows recent, commonly used metrics. This view is intended for a quick health and performance check of an individual Azure PostgreSQL server. | Platform metrics are collected automatically.<br/>No configuration required. |
 | [Metrics Explorer](/azure/azure-monitor/essentials/metrics-getting-started) | Use Metrics Explorer to interactively analyze Azure Monitor metrics and create metric-based alerts. It provides flexible filtering, aggregation, and visualization capabilities. | - Platform metrics for Azure resources are available automatically.<br/>- No extra configuration required after data collection is enabled.<br/>- Guest metrics require the Azure Monitor Agent (VMs only).<br/>- Application metrics require Application Insights. |
 | Embedded Grafana dashboards (Azure portal) | Prebuilt Grafana dashboards are embedded directly in the Azure portal for Azure Database for PostgreSQL at no extra cost and without any setup. Use these dashboards for quick, built-in monitoring of your PostgreSQL servers. For details, see [Embedded Grafana dashboards in Azure portal](#embedded-grafana-dashboards-in-azure-portal). | No configuration required.<br/>Dashboards are available immediately in the Azure portal. |
-| [Azure Managed Grafana](https://aka.ms/azure-postgres-grafana) | Use Azure Managed Grafana for advanced scenarios such as extended plugins, advanced authentication and provisioning, fine-grained multitenant control, and multicloud connectivity. All Grafana distributions include the [Azure Monitor data source plug-in](/azure/azure-monitor/visualize/grafana-plugin), enabling rich dashboards and cross-metric correlations. | Familiarity with Grafana concepts is recommended.<br/>Setup can be simplified by using the prebuilt **Azure PostgreSQL Grafana dashboard**, which enables monitoring across multiple Azure PostgreSQL Flexible Server instances with minimal configuration. |
+| [Azure Managed Grafana](https://aka.ms/azure-postgres-grafana) | Use Azure Managed Grafana for advanced scenarios such as extended plugins, advanced authentication and provisioning, fine-grained multitenant control, and multicloud connectivity. All Grafana distributions include the [Azure Monitor data source plug-in](/azure/azure-monitor/visualize/grafana-plugin), enabling rich dashboards and cross-metric correlations. | Familiarity with Grafana concepts is recommended.<br/>Setup can be simplified by using the prebuilt **Azure PostgreSQL Grafana dashboard**, which enables monitoring across multiple Azure PostgreSQL flexible servers with minimal configuration. |
 
 #### Embedded Grafana dashboards in Azure portal
 
@@ -272,9 +272,9 @@ These logs come from operations at the data plane level.
 
 The system doesn't automatically collect these logs. To collect these logs in a supported external location, you must configure the system. Ingestion, retention, and subsequent querying have associated costs.
 
-These logs are organized in categories, and those categories are grouped into category groups. The two category groups are `audit` and `allLogs`. By selecting either or both, is equivalent to selecting all individual log categories.
+These logs are organized in categories, and those categories are grouped into category groups. The two category groups are `audit` and `allLogs`. By selecting either or both, you select all individual log categories.
 
-The following logs can be streamed to an external destination like a Log Analytics workspace, a storage account, an event hub, or a partner solution by using **Diagnostic Settings**. To learn more about it, refer to [Configure and access logs](./how-to-configure-and-access-logs.md).
+You can stream the following logs to an external destination like a Log Analytics workspace, a storage account, an event hub, or a partner solution by using **Diagnostic Settings**. To learn more, see [Configure and access logs](./how-to-configure-and-access-logs.md).
 
 The following sections enumerate and describe each of the log categories that you can configure.
 
@@ -291,7 +291,7 @@ Events written to PostgreSQL server logs.
 
 ### Active sessions
 
-Snapshot of active PostgreSQL sessions showing details current database connections and their activity, including session metadata, timing, and wait states.
+Snapshot of active PostgreSQL sessions that shows details about current database connections and their activity. This snapshot includes session metadata, timing, and wait states.
 
 **Running frequency**: 5 minutes.<br/>
 **Category name**: PostgreSQLFlexSessions.<br/>
@@ -302,20 +302,20 @@ Snapshot of active PostgreSQL sessions showing details current database connecti
 
 ###  Query store runtime statistics
 
-Detailed query performance statistics captured by query store.
+Detailed query performance statistics that the query store captures.
 
-**Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes`, when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br/>
+**Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes` when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br/>
 **Category name**: PostgreSQLFlexQueryStoreRuntime.<br/>
 **Display name**: PostgreSQL Query Store Runtime.<br/>
 **Resource specific table**: PGSQLQueryStoreRuntime.<br/>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetQueryStoreRuntime.<br/>
-**Additional requirements**: `pg_qs.query_capture_mode` must be set to either `top` or `all`.<br/>
+**Additional requirements**: Set `pg_qs.query_capture_mode` to either `top` or `all`.<br/>
 
 ### Query store waits statistics
 
 Details about the waits on which each backend was waiting every time query store captured a sample of waits.
 
-**Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes`, when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br/>
+**Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes` when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br/>
 **Category name**: PostgreSQLFlexQueryStoreWaitStats.<br/>
 **Display name**: PostgreSQL Query Store Wait Statistics.<br/>
 **Resource specific table**: PGSQLQueryStoreWaits.<br/>
@@ -326,7 +326,7 @@ Details about the waits on which each backend was waiting every time query store
 
 Text of the queries captured by query store.
 
-**Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes`, when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br/>
+**Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes` when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br/>
 **Category name**: PostgreSQLQueryStoreSqlText.<br/>
 **Display name**: PostgreSQL Query Store SQL Text.<br/>
 **Resource specific table**: PGSQLQueryStoreQueryText.<br/>
@@ -364,7 +364,7 @@ Built-in PgBouncer logs.
 **Display name**: PostgreSQL PgBouncer Logs.<br/>
 **Resource specific table**: PGSQLPgBouncer.<br/>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPgBouncerLogs.<br/>
-**Additional requirements**: Built-in PgBouncer must be enabled on the server by setting `pgbouncer.enabled` to `on`.<br/>
+**Additional requirements**: Enable built-in PgBouncer on the server by setting `pgbouncer.enabled` to `on`.<br/>
 
 ### Logs visualization
 
@@ -374,7 +374,7 @@ Built-in PgBouncer logs.
 
 ## Server logs
 
-The Server Logs feature in your Azure Database for PostgreSQL flexible server instance allows you to enable, configure, and **download server logs**. These logs are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature is disabled. However, after you enable the feature, your Azure Database for PostgreSQL flexible server instance starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
+The Server Logs feature in your Azure Database for PostgreSQL flexible server allows you to enable, configure, and **download server logs**. These logs are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature is disabled. However, after you enable the feature, your Azure Database for PostgreSQL flexible server starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
 
 ### Server logs retention
 

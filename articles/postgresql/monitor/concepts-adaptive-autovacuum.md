@@ -1,33 +1,34 @@
 ---
-title: Adaptive autovacuum
+title: Adaptive Autovacuum in Azure Database for PostgreSQL Flexible Server
 description: This article describes the adaptive autovacuum feature in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to understand how adaptive autovacuum works in Azure Database for PostgreSQL flexible server, so that I can decide whether to enable it for my workloads.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/30/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
 ---
 
-# Adaptive autovacuum
+# Adaptive autovacuum in Azure Database for PostgreSQL flexible server
 
-This page documents both `adaptive_autovacuum` parameters supported by Azure Database for PostgreSQL flexible server:
+This article documents the `adaptive_autovacuum` parameters supported by Azure Database for PostgreSQL flexible server:
 
-- `adaptive_autovacuum.optimize_configurations`: Enables automatic tuning of a series of autovacuum settings
-- `adaptive_autovacuum.open_transaction_threshold`: Sets the age threshold (seconds) used to detect and mitigate old prepared transactions.
+- `adaptive_autovacuum.optimize_configurations`: Enables automatic tuning of a series of autovacuum settings.
+- `adaptive_autovacuum.open_transaction_threshold`: Sets the age threshold in seconds to detect and mitigate old prepared transactions.
 
 ## How each parameter works
 
 ### adaptive_autovacuum.optimize_configurations
 
-When set to `on`, the tuning service periodically:
+When you set this parameter to `on`, the tuning service periodically:
 
 1. Collects and aggregates workload and table-statistics signals.
-2. Evaluates rule workflows.
-3. Computes candidate autovacuum parameter updates.
-4. Applies updates and reloads engine configuration.
-5. Writes audit entries.
+1. Evaluates rule workflows.
+1. Computes candidate autovacuum parameter updates.
+1. Applies updates and reloads engine configuration.
+1. Writes audit entries.
 
 If no rule conditions are met, a run can complete with no changes.
 
@@ -40,20 +41,20 @@ Current tunable parameters:
 - `autovacuum_analyze_scale_factor`
 
 > [!NOTE]
-> - If `autovacuum_vacuum_cost_limit` is -1, logic derives from `vacuum_cost_limit`.
-> - `autovacuum_freeze_max_age` is used as an input signal but isn't directly tuned.
+> - If you set `autovacuum_vacuum_cost_limit` to -1, the logic derives from `vacuum_cost_limit`.
+> - The tuning service uses `autovacuum_freeze_max_age` as an input signal but doesn't directly tune it.
 
 ### Visibility and override behavior for tuned parameters
 
 When this feature changes any of the five target parameters (`autovacuum_vacuum_cost_limit`, `autovacuum_vacuum_threshold`, `autovacuum_vacuum_scale_factor`, `autovacuum_vacuum_cost_delay`, `autovacuum_analyze_scale_factor`):
 
-- Those effective runtime changes aren't surfaced via control plane Configurations endpoint (for example GET Configurations API or `az postgres flexible-server parameter` CLI command group).
-- To observe the effective values, use data-plane queries against the PostgreSQL endpoint (for example `SHOW <guc_name>` or `SELECT name, setting FROM pg_settings WHERE name IN (...)`).
+- The control plane Configurations endpoint (for example, GET Configurations API or `az postgres flexible-server parameter` CLI command group) doesn't show these effective runtime changes.
+- To see the effective values, use data-plane queries against the PostgreSQL endpoint (for example, `SHOW <guc_name>` or `SELECT name, setting FROM pg_settings WHERE name IN (...)`).
 
 User override semantics:
 
-- You can set any of these five parameters directly via portal, REST API, CLI or any of the supported SDKs.
-- If you set a parameter to the same value currently returned by control plane Configurations endpoint, the operation is treated as no-op and no new effective change is applied.
+- You can set any of these five parameters directly through the portal, REST API, CLI, or any of the supported SDKs.
+- If you set a parameter to the same value that the control plane Configurations endpoint currently returns, the operation is treated as a no-op and no new effective change is applied.
 - User-set values override the feature-applied values at the time they're applied.
 - If `adaptive_autovacuum.optimize_configurations` remains enabled, later tuning iterations can apply new values again based on rule evaluation.
 
@@ -62,9 +63,9 @@ User override semantics:
 This parameter controls orphan prepared-transaction mitigation:
 
 - 0 means disabled.
-- greater than 0 means enabled with threshold in seconds.
+- Greater than 0 means enabled with threshold in seconds.
 
-When enabled, if the oldest prepared transaction exceeds the threshold, the orphan-transaction handler evaluates eligibility and can rollback old prepared transactions. The handler updates its in-memory threshold on parameter changes, so behavior follows the latest value.
+When enabled, if the oldest prepared transaction exceeds the threshold, the orphan-transaction handler evaluates eligibility and can roll back old prepared transactions. The handler updates its in-memory threshold on parameter changes, so behavior follows the latest value.
 
 Important timing detail:
 
@@ -74,12 +75,12 @@ Important timing detail:
 
 ## Runtime and scheduling behavior
 
-- `optimize_configurations` tuning cadence: every 30 minutes.
-- Enabling `optimize_configurations` from `off` to `on` triggers an immediate tuning run, then scheduled runs continue.
-- `open_transaction_threshold` handling is event-driven from prepared-transaction observations; mitigation runs only when age checks exceed threshold.
-- Prepared-transaction observation for `open_transaction_threshold` is refreshed every 300 seconds.
+- The `optimize_configurations` tuning cadence is every 30 minutes.
+- When you turn on `optimize_configurations`, it triggers an immediate tuning run, and then scheduled runs continue.
+- The handling of `open_transaction_threshold` is event-driven from prepared-transaction observations. Mitigation runs only when age checks exceed the threshold.
+- The prepared-transaction observation for `open_transaction_threshold` refreshes every 300 seconds.
 
-### When is `intelligentperformance` schema created after enabling?
+### When is the `intelligentperformance` schema created after enabling?
 
 The `intelligentperformance` schema is created under the `azure_sys` database. Its creation isn't immediate and is handled by the functionality that persists statistics used by adaptive autovacuum, rather than by the initial tuning run itself. Typically, the schema is created within 0–30 minutes after enabling the feature.
 
@@ -91,9 +92,9 @@ Creation might be delayed or skipped if certain prerequisites aren't met.
 
 Both controls are subject to the following requirements:
 
-- Instance must be a primary.
+- The instance must be a primary.
 - PostgreSQL isn't in recovery mode.
-- Compute of the server has a minimum of 4 vCores.
+- The compute of the server has a minimum of 4 vCores.
 - The server is a regular flexible server, not an elastic cluster. The feature isn't supported on elastic clusters.
 - `adaptive_autovacuum.optimize_configurations` is supported on major versions greater than or equal to 14.
 - `adaptive_autovacuum.open_transaction_threshold` is supported on major versions greater than or equal to 13.
@@ -101,7 +102,7 @@ Both controls are subject to the following requirements:
 
 ## Auditing and observability
 
-Actions from both controls are written to an audit view called `intelligentperformance.adaptive_tuning_events`.
+The system records actions from both controls in an audit view named `intelligentperformance.adaptive_tuning_events`.
 
 ### Schema of the view
 
@@ -114,7 +115,7 @@ Expected logical shape:
 
 ### Query for recent activity
 
-You can query recent activity using the following queries:
+To query recent activity, use the following queries:
 
 ```sql
 SELECT
