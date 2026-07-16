@@ -307,7 +307,7 @@ To enable this behavior:
 - Set `sync_replication_slots` to `on`.
 - Set `hot_standby_feedback` to `on`.
 
-With these settings, the system preserves logical replication slots during failover, and replication can continue without requiring extensions. For details, see the [PG_Failover_Slots extension](../extensions/concepts-extensions-versions.md#pg_failover_slots) documentation.
+With these settings, the system preserves logical replication slots during failover, and replication can continue without requiring extensions. For details, see the [PG_Failover_Slots extension](../extensions/concepts-extensions-considerations.md#pg_failover_slots) documentation.
 
 ### Important considerations
 - You manage logical replication slots on the primary server, but the standby server **must also have** these slots to ensure logical replication continues after HA failover.
