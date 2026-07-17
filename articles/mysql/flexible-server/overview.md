@@ -225,7 +225,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | China East 3 | Yes | Yes | No | Yes |
 | China North 2 | Yes | Yes | No | Yes |
 | China North 3 | Yes | Yes | Yes | Yes |
-| Denmark East | Yes | Yes | Yes | Yes |
+| Denmark East | Yes | Yes | Yes | No |
 | East Asia (Hong Kong SAR) | Yes | Yes | Yes | Yes |
 | East US | Yes | Yes | Yes | Yes |
 | East US 2 | Yes | Yes | Yes | Yes |
@@ -255,7 +255,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | South Central US | Yes | Yes | Yes | Yes |
 | South India | Yes | Yes | No | Yes |
 | Southeast Asia | Yes | Yes | Yes | Yes |
-| Spain Central | Yes | Yes | Yes | Yes |
+| Spain Central | Yes | Yes | Yes | No |
 | Sweden Central | Yes | Yes | Yes | No |
 | Switzerland North | Yes | Yes | Yes | Yes |
 | Switzerland West | Yes | Yes | No | Yes |
