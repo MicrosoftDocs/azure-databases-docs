@@ -11,7 +11,7 @@ ms.collection:
   - sql-migration-content
 ---
 
-# Tutorial: Migrate from MySQL to Azure Database for MySQL using DMS physical migration with the Azure portal (Preview)
+# Tutorial: Migrate from MySQL to Azure Database for MySQL by using DMS physical migration with the Azure portal
 
 DMS *physical online data migration* supports migration to Azure Database for MySQL versions 5.7, 8.0, and 8.4. You can migrate from lower version MySQL servers (v5.6 and higher) to a higher version MySQL server. In addition, DMS supports cross-region, cross-resource group, and cross-subscription migrations.
 
@@ -149,7 +149,7 @@ With your target flexible server deployed and configured, you next need to set u
 
 ### Register the resource provider
 
-To register the Microsoft. The dataMigration resource provider performs the following steps:
+To register the Microsoft.DataMigration resource provider, complete the following steps:
 
 1. Before you create your first DMS instance, sign in to the Azure portal, and then search for and select **Subscriptions**.
 
@@ -187,7 +187,7 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/8-configure-pricing-tier.png" alt-text="Screenshot of a Select Pricing tier.":::
 
-   Next, we need to specify the virtual network (virtual network) that provides the DMS instance access to the source MySQL server and the target flexible server.
+   Next, specify the virtual network that provides the DMS instance access to the source MySQL server and the target flexible server.
 
 1. On the **Create Migration Service** page, select **Next: Networking >>**.
 
@@ -229,7 +229,7 @@ To create a migration project, perform the following steps.
 
    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/2-create-migration-project.png" alt-text="Screenshot of create migration project.":::
 
-1. On the **New migration project** page, specify a name for the project. In the **Source server type** selection box, select **MySQL**. In the **Target server type** selection box, select **Azure Database For MySQL**. In the **Migration activity type** selection box, select **[Preview] Physical online data migration**. Then, select **Create and run activity**.
+1. On the **New migration project** page, specify a name for the project. In the **Source server type** selection box, select **MySQL**. In the **Target server type** selection box, select **Azure Database For MySQL**. In the **Migration activity type** selection box, select **Physical online data migration**. Then, select **Create and run activity**.
 
    Selecting **Create project only** as the migration activity type that only creates the migration project; you can then run it later.
 
