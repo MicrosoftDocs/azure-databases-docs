@@ -1,10 +1,10 @@
 ---
 title: Frequently Asked Questions (FAQ) for Certificate Rotation for Azure Database for MySQL
 description: Common asked questions about the root certificate rotation that affects Azure Database for MySQL.
-author: shih-che
-ms.author: shihche
-ms.reviewer: talawren, maghan, randolphwest
-ms.date: 01/05/2026
+author: Tameika-MSFT
+ms.author: talawren
+ms.reviewer: maghan
+ms.date: 07/17/2026
 ms.service: azure-database-mysql
 ms.subservice: security
 ms.topic: concept-article
@@ -12,7 +12,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Frequently asked questions for certificate rotation for Azure Database for MySQL
+# Frequently asked questions for certificate rotation for Azure Database for MySQL flexible server
 
 This article answers common questions about root certificate rotation.
 
@@ -40,13 +40,13 @@ No. Because the change is only on the client side to connect to the database ser
 
 ## Is there a rollback plan for the root certificate rotation?
 
-If your application experiences problems after the certificate rotation, replace the certificate file by reinstalling the combined certificate or the SHA-2-based certificate, depending on your use case. We recommend that you don't roll back the change, because the change is mandatory.
+If your application experiences problems after the certificate rotation, replace the certificate file by reinstalling the combined certificate or the SHA-2-based certificate, depending on your use case. Don't roll back the change, because the change is mandatory.
 
 ## Are the certificates that Azure Database for MySQL uses trustworthy?
 
-The certificates that Azure Database for MySQL uses come from trusted certificate authorities. We support these certificates based on the support that the certificate authority provides.
+The certificates that Azure Database for MySQL uses come from trusted certificate authorities. Microsoft supports these certificates based on the support that the certificate authority provides.
 
-The DigiCert Global Root CA certificate uses the less secure SHA-1 hashing algorithm. This algorithm compromises the security of applications that connect to Azure Database for MySQL. For this reason, we need to perform a certificate change.
+The DigiCert Global Root CA certificate uses the less secure SHA-1 hashing algorithm. This algorithm compromises the security of applications that connect to Azure Database for MySQL. For this reason, Microsoft needs to perform a certificate change.
 
 ## Is the DigiCert Global Root G2 certificate the same certificate that the Single Server deployment option used?
 
@@ -85,5 +85,5 @@ If you still have questions, you can get answers from community experts in [Micr
 ## Related content
 
 - [Transport Layer Security (TLS) in Azure Database for MySQL](security-tls.md)
-- [Root certificate rotation for Azure Database for MySQL](security-tls-root-certificate-rotation.md)
+- [Root certificate rotation for Azure Database for MySQL flexible server](security-tls-root-certificate-rotation.md)
 - [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](security-tls-how-to-connect.md)

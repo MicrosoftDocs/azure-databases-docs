@@ -1,10 +1,10 @@
 ---
 title: Certificate Rotation for Azure Database for MySQL
 description: Learn about the upcoming changes of root certificate rotation that affects Azure Database for MySQL.
-author: shih-che
-ms.author: shihche
-ms.reviewer: talawren, maghan, randolphwest
-ms.date: 02/17/2026
+author: Tameika-MSFT
+ms.author: talawren
+ms.reviewer: maghan
+ms.date: 07/17/2026
 ms.service: azure-database-mysql
 ms.subservice: security
 ms.topic: concept-article
@@ -12,27 +12,27 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Root certificate rotation for Azure Database for MySQL
+# Root certificate rotation for Azure Database for MySQL flexible server
 
-[!INCLUDE [mysql-certificate-rotation](includes/mysql-certificate-rotation.md)]
+[!INCLUDE [mysql-certificate-rotation](../flexible-server/includes/mysql-certificate-rotation.md)]
 
-The current root certificate **DigiCert Global Root CA** is replaced by two new root certificates:
+The current root certificate, **DigiCert Global Root CA**, is replaced by two new root certificates:
 
 - **DigiCert Global Root G2**
 - **Microsoft RSA Root Certificate Authority 2017**
 
 If you use Transport Layer Security (TLS) with root certificate verification, you must install all three root certificates during the transition period. Once you change all the certificates, you can remove the old SHA-1 root certificate **DigiCert Global Root CA** from the store. If you don't add the new certificates before September 1, 2025, your connections to the databases **fail**.
 
-This article provides instructions on how to add the two new root certificates, and answers to frequently asked questions.
+This article provides instructions on how to add the two new root certificates and answers to frequently asked questions.
 
-> [!NOTE]
+> [!NOTE]  
 > If the continued use of SHA-1 is a blocker and you want to have your certificates changed before the general rollout, follow the [instructions in this article for creating a combined certificate authority (CA) certificate on the client](#how-to-update-the-root-certificate-store-on-your-client). Then open a support request to rotate your certificate for Azure Database for MySQL.
 
 ## Why is a root certificate update required?
 
 Azure Database for MySQL users can only use the predefined certificate to connect to their MySQL server instances. The current certificate is signed by **DigiCert Global Root CA**. It uses SHA-1. The SHA-1 hashing algorithm is considerably insecure, due to discovered vulnerabilities. It's no longer compliant with security standards.
 
-Microsoft needs to rotate the certificate to one signed by a compliant root certificate authority to remediate the issue.
+Microsoft needs to rotate the certificate to one signed by a compliant root certificate authority to fix the issue.
 
 ## How to update the root certificate store on your client
 
@@ -160,5 +160,5 @@ CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ss
 
 ## Related content
 
-- [Frequently asked questions for certificate rotation for Azure Database for MySQL](security-tls-root-certificate-rotation-faq.md)
+- [Frequently asked questions for certificate rotation for Azure Database for MySQL flexible server](security-tls-root-certificate-rotation-faq.md)
 - [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](security-tls-how-to-connect.md)

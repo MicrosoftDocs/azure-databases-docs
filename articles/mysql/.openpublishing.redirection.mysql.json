@@ -996,6 +996,71 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-customer-managed-key.md",
+      "redirect_url": "/azure/mysql/security/security-customer-managed-key",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-entra-authentication.md",
+      "redirect_url": "/azure/mysql/security/security-entra-authentication",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-how-to-create-users.md",
+      "redirect_url": "/azure/mysql/security/security-how-to-create-users",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-how-to-data-encryption-cli.md",
+      "redirect_url": "/azure/mysql/security/security-how-to-data-encryption-cli",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-how-to-data-encryption-portal.md",
+      "redirect_url": "/azure/mysql/security/security-how-to-data-encryption-portal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-how-to-entra.md",
+      "redirect_url": "/azure/mysql/security/security-how-to-entra",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-how-to-manage-firewall-cli.md",
+      "redirect_url": "/azure/mysql/security/security-how-to-manage-firewall-cli",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-how-to-manage-firewall-portal.md",
+      "redirect_url": "/azure/mysql/security/security-how-to-manage-firewall-portal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-overview.md",
+      "redirect_url": "/azure/mysql/security/security-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-tls.md",
+      "redirect_url": "/azure/mysql/security/security-tls",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-tls-how-to-connect.md",
+      "redirect_url": "/azure/mysql/security/security-tls-how-to-connect",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-tls-root-certificate-rotation.md",
+      "redirect_url": "/azure/mysql/security/security-tls-root-certificate-rotation",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/security-tls-root-certificate-rotation-faq.md",
+      "redirect_url": "/azure/mysql/security/security-tls-root-certificate-rotation-faq",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/mysql/single-server/how-to-troubleshoot-sys-schema.md",
       "redirect_url": "/azure/mysql/flexible-server/how-to-troubleshoot-sys-schema",
       "redirect_document_id": true

@@ -3,25 +3,25 @@ title: Set up Data Encryption by Using the Azure CLI
 description: Learn how to set up and manage data encryption for Azure Database for MySQL - Flexible Server by using Azure CLI.
 author: Tameika-MSFT
 ms.author: talawren
-ms.reviewer: maghan, randolphwest
-ms.date: 01/07/2026
+ms.reviewer: maghan
+ms.date: 07/17/2026
 ms.service: azure-database-mysql
-ms.subservice: flexible-server
+ms.subservice: security
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
   - devx-track-arm-template
 ---
 
-# Data encryption for Azure Database for MySQL - Flexible Server with Azure CLI
+# Data encryption for Azure Database for MySQL flexible server with Azure CLI
 
 This tutorial shows you how to set up and manage data encryption for Azure Database for MySQL Flexible Server using Azure CLI.
 
 In this tutorial, you learn how to:
 
-- Create an Azure Database for MySQL Flexible Server instance with data encryption
-- Update an existing Azure Database for MySQL Flexible Server instance with data encryption
-- Using an Azure Resource Manager template to enable data encryption
+- Create an Azure Database for MySQL flexible server instance with data encryption
+- Update an existing Azure Database for MySQL flexible server instance with data encryption
+- Use an Azure Resource Manager template to enable data encryption
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ In this tutorial, you learn how to:
 - If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
   > [!NOTE]  
-  > With an Azure free account, you can now try Azure Database for MySQL Flexible Server for free for 12 months. For more information, see [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](how-to-deploy-on-azure-free-account.md).
+  > With an Azure free account, you can now try Azure Database for MySQL Flexible Server for free for 12 months. For more information, see [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](../flexible-server/quickstart-create-server-portal.md).
 
 - Install or upgrade Azure CLI to the latest version. See [Install Azure CLI](/cli/azure/install-azure-cli).
 
@@ -78,7 +78,7 @@ The key must have the following attributes to use as a customer-managed key:
 You can verify the above attributes of the key by using the following command:
 
 - For Azure Key Vault:
-  
+
 ```azurecli-interactive
 az keyvault key show --vault-name \<key\_vault\_name\> -n \<key\_name\>
 ```
@@ -88,8 +88,6 @@ az keyvault key show --vault-name \<key\_vault\_name\> -n \<key\_name\>
 ```azurecli-interactive
 az keyvault key show --hsm-name \<key\_vault\_name\> -n \<key\_name\>
 ```
-
-
 
 ## Update an existing Azure Database for MySQL Flexible Server instance with data encryption
 
@@ -267,4 +265,4 @@ The params **identityUri** and **primaryKeyUri** are the resource ID of the user
 ## Related content
 
 - [Data encryption with customer managed keys for Azure Database for MySQL](security-customer-managed-key.md)
-- [Data encryption for Azure Database for MySQL with the Azure portal](security-how-to-data-encryption-portal.md)
+- [Data encryption for Azure Database for MySQL flexible server with the Azure portal](security-how-to-data-encryption-portal.md)
