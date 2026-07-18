@@ -3,22 +3,22 @@ title: Manage Firewall Rules - Azure Portal
 description: Create and manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal.
 author: SudheeshGH
 ms.author: sunaray
-ms.reviewer: maghan, randolphwest
-ms.date: 01/07/2026
+ms.reviewer: maghan
+ms.date: 07/17/2026
 ms.service: azure-database-mysql
-ms.subservice: flexible-server
+ms.subservice: security
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange
 ---
 
-# Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal
+# Manage firewall rules for Azure Database for MySQL - Flexible Server by using the Azure portal
 
-This article provides an overview of managing firewall rules after creating an Azure Database for MySQL Flexible Server instance. With *Public access (allowed IP addresses)*, the connections to the Azure Database for MySQL Flexible Server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in firewall rules.
+This article provides an overview of managing firewall rules after creating an Azure Database for MySQL Flexible Server instance. By using *Public access (allowed IP addresses)*, you restrict connections to the Azure Database for MySQL Flexible Server instance to only allowed IP addresses. You need to allow the client IP addresses in firewall rules.
 
-This article focuses on creating an Azure Database for MySQL Flexible Server instance with **Public access (allowed IP addresses)** using the Azure portal.
+This article focuses on creating an Azure Database for MySQL Flexible Server instance with **Public access (allowed IP addresses)** by using the Azure portal.
 
-To learn more about it, refer to [Public access (allowed IP addresses)](concepts-networking-public.md#public-access-allowed-ip-addresses). The firewall rules can be defined at the time of server creation (recommended) but can be added later.
+For more information, see [Public access (allowed IP addresses)](../flexible-server/concepts-networking-public.md#public-access-allowed-ip-addresses). You can define the firewall rules when you create the server (recommended) or add them later.
 
 Azure Database for MySQL Flexible Server supports two mutually exclusive network connectivity methods to connect to your Azure Database for MySQL Flexible Server instance. The two options are:
 
@@ -32,7 +32,7 @@ Azure Database for MySQL Flexible Server supports two mutually exclusive network
 1. Select **Flexible server** as the deployment option.
 1. Fill out the **Basics** form.
 1. Go to the **Networking** tab to configure how you want to connect to your server.
-1. In the **Connectivity method**, select *Public access (allowed IP addresses)*. To create the **Firewall rules**, specify the Firewall rule name and a single IP address or a range of addresses. If you want to limit the rule to a single IP address, type the same address in the field for the Start IP address and End IP address. Opening the firewall enables administrators, users, and applications to access any database on the MySQL server to which they have valid credentials.
+1. In the **Connectivity method**, select *Public access (allowed IP addresses)*. To create the **Firewall rules**, specify the firewall rule name and a single IP address or a range of addresses. If you want to limit the rule to a single IP address, type the same address in the field for the Start IP address and End IP address. Opening the firewall enables administrators, users, and applications to access any database on the MySQL server to which they have valid credentials.
 
    > [!NOTE]  
    > Azure Database for MySQL Flexible Server creates a firewall at the server level. It prevents external applications and tools from connecting to the server and any databases on the server unless you create a rule to open the firewall for specific IP addresses.
@@ -40,19 +40,15 @@ Azure Database for MySQL Flexible Server supports two mutually exclusive network
 1. Select **Review + create** to review your Azure Database for MySQL Flexible Server configuration.
 1. Select **Create** to provision the server. Provisioning can take a few minutes.
 
-## Create a firewall rule after the server is created
+## Create a firewall rule after creating the server
 
-1. In the [Azure portal](https://portal.azure.com/), select the Azure Database for MySQL Flexible Server instance on which you want to add firewall rules.
+1. In the [Azure portal](https://portal.azure.com/), select the Azure Database for MySQL Flexible Server instance where you want to add firewall rules.
 
-1. On the Azure Database for MySQL Flexible Server page, under **Settings** heading, select **Networking** to open the Networking page for the Azure Database for MySQL Flexible Server instance.
-
-   :::image type="content" source="media/how-to-manage-firewall-portal/1-connection-security.png" alt-text="Screenshot of Azure portal - select Connection Security." lightbox="media/how-to-manage-firewall-portal/1-connection-security.png":::
+1. On the Azure Database for MySQL Flexible Server page, under **Settings**, select **Networking** to open the Networking page for the Azure Database for MySQL Flexible Server instance.
 
 1. Select **Add current client IP address** in the firewall rules. This selection creates a firewall rule with the public IP address of your computer, as perceived by the Azure system.
 
-   :::image type="content" source="media/how-to-manage-firewall-portal/2-add-my-ip.png" alt-text="Screenshot of Azure portal - select Add My IP." lightbox="media/how-to-manage-firewall-portal/2-add-my-ip.png":::
-
-1. Verify your IP address before saving the configuration. In some situations, the IP address observed by the Azure portal differs from the IP address used when accessing the internet and Azure servers. Therefore, you might need to change the Start and End IP addresses to make the rule function as expected.
+1. Verify your IP address before saving the configuration. In some situations, the IP address that the Azure portal observes differs from the IP address used when accessing the internet and Azure servers. Therefore, you might need to change the Start and End IP addresses to make the rule function as expected.
 
    You can use a search engine or other online tool to check your own IP address. For example, search for "what is my IP."
 
@@ -90,6 +86,6 @@ Repeat the following steps to manage the firewall rules.
 
 ## Related content
 
-- [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
-- [Azure Database for MySQL Flexible Server firewall rules](concepts-networking-public.md#public-access-allowed-ip-addresses)
-- [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](security-how-to-manage-firewall-cli.md)
+- [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](../flexible-server/concepts-networking.md)
+- [Azure Database for MySQL Flexible Server firewall rules](../flexible-server/concepts-networking-public.md#public-access-allowed-ip-addresses)
+- [Manage firewall rules for Azure Database for MySQL flexible server using Azure CLI](security-how-to-manage-firewall-cli.md)
