@@ -335,6 +335,9 @@ SELECT * FROM pg_replication_slots;
 
 For PostgreSQL 17 and later versions, slot synchronization is supported natively. If you enable the correct PostgreSQL configurations (`sync_replication_slots`, `hot_standby_feedback`), logical replication slots are preserved automatically after failover, and no extension is required.
 
+> [!NOTE]
+> After enabling slot synchronization, only logical replication slots created with the failover option enabled are synchronized to the standby.
+
 > [!IMPORTANT]  
 > You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. The primary server automatically switches to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. If the storage threshold exceeds a certain limit, and the logical replication slot isn't in use (due to a nonavailable subscriber), Azure Database for PostgreSQL flexible server automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
 
