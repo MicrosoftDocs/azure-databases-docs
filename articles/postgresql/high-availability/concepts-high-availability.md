@@ -5,7 +5,7 @@ description: Learn how zone-redundant and zonal high availability work in Azure 
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 07/13/2026
+ms.date: 07/22/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
 ms.topic: how-to
@@ -23,7 +23,7 @@ By default in most regions, the service deploys your standby replica into a diff
 
 - You can add availability zone support to an existing database server.
 
-- Along with the standby server, the architecture includes a WAL replica server to maintain quorum commit. In scenarios where the standby server is temporarily unavailable, transactions are committed on the primary server and the WAL replica server to ensure durability. When the standby server becomes available again, it automatically catches up with the primary server. This architecture helps ensure that committed records are durably persisted.
+- Along with the standby server, the architecture includes a WAL replica server in a separate availability zone to maintain quorum commit. In scenarios where the standby server is temporarily unavailable, transactions are committed on the primary server and the WAL replica server to ensure durability. When the standby server becomes available again, it automatically catches up with the primary server. This architecture helps ensure that committed records are durably persisted.
 
 - If a failover occurs, the process promotes only the standby server to become the new primary server. The WAL replica server isn't promoted and is used solely to help maintain commit quorum.
 
