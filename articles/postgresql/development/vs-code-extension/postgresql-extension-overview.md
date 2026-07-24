@@ -12,7 +12,7 @@ ms.topic: overview
 # customer intent: As a user, I want an overview of the PostgreSQL extension for Visual Studio Code, so that I can understand its database development, visualization, management, and AI capabilities.
 ---
 
-# PostgreSQL extension for Visual Studio Code
+# PostgreSQL extension for Visual Studio Codes
 
 The PostgreSQL extension for Visual Studio Code (`ms-ossdata.vscode-pgsql`) brings database development tools directly into your editor. You can connect to local, on-premises, or cloud-provided PostgreSQL servers, write queries with IntelliSense, explore database objects, visualize query plans and schemas, and manage Azure Database for PostgreSQL flexible server resources, all without leaving VS Code. The extension also integrates with AI assistants for AI-assisted query authoring, analysis, and agent-driven workflows.
 
